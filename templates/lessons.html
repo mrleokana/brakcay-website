@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Lessons — BraKcay{% endblock %}
+{% block content %}
+<section class="lessons">
+  <h2>Lessons & Courses</h2>
+
+  <div class="tabs" id="tabs-page">
+    <div class="tab active" data-tab="page-acca">ACCA Course</div>
+    <div class="tab" data-tab="page-forex">Forex Trading</div>
+    <div class="tab" data-tab="page-crypto">Crypto Trading</div>
+    <div class="tab" data-tab="page-digital">Digital Marketing</div>
+  </div>
+
+  <div id="page-acca" class="lesson-container tab-content">
+    <div class="lesson-card">
+      <img src="{{ url_for('static', filename='images/lesson1.png') }}" alt="">
+      <div class="lesson-info"><h3>ACCA Foundation</h3><p>Overview and quizzes</p></div>
+    </div>
+    <div class="lesson-card">
+      <img src="{{ url_for('static', filename='images/lesson2.png') }}" alt="">
+      <div class="lesson-info"><h3>ACCA Intermediate</h3><p>Practice problems</p></div>
+    </div>
+  </div>
+
+  <div id="page-forex" class="lesson-container tab-content" style="display:none;">
+    <div class="lesson-card">
+      <img src="{{ url_for('static', filename='images/lesson3.png') }}" alt="">
+      <div class="lesson-info"><h3>Forex Basics</h3><p>Market mechanics & strategy</p></div>
+    </div>
+  </div>
+
+  <div id="page-crypto" class="lesson-container tab-content" style="display:none;">
+    <div class="lesson-card">
+      <img src="{{ url_for('static', filename='images/lesson3.png') }}" alt="">
+      <div class="lesson-info"><h3>Crypto Essentials</h3><p>Wallets, exchanges & risk</p></div>
+    </div>
+  </div>
+
+  <div id="page-digital" class="lesson-container tab-content" style="display:none;">
+    <div class="lesson-card">
+      <img src="{{ url_for('static', filename='images/lesson2.png') }}" alt="">
+      <div class="lesson-info"><h3>Social Media Growth</h3><p>Content strategy & analytics</p></div>
+    </div>
+  </div>
+
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const tabs = document.querySelectorAll('#tabs-page .tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t=>t.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelectorAll('.tab-content').forEach(c=>c.style.display='none');
+      document.getElementById(tab.dataset.tab).style.display = 'grid';
+    });
+  });
+});
+</script>
+{% endblock %}

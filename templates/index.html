@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="home" class="home-section">
+    <div class="container">
+        <div class="home-intro">
+            <h1>Welcome to BraKcay</h1>
+            <p>Becoming Resourceful Architects Kopanang (Uniting) Communities And Youth 🌍</p>
+            <a href="#about" class="btn-primary">Learn More</a>
+        </div>
+
+        <div class="home-cards">
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/financial-literacy.jpg') }}" alt="Financial Literacy">
+                <h3>Financial Literacy</h3>
+                <p>Empowering youth to master money, investing, and financial independence.</p>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/digital-marketing.jpg') }}" alt="Digital Marketing">
+                <h3>Digital Marketing</h3>
+                <p>Learn to leverage digital platforms for entrepreneurship and growth.</p>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/forex-crypto.jpg') }}" alt="Forex & Crypto">
+                <h3>Forex & Crypto</h3>
+                <p>Understand trading, cryptocurrency, and wealth-building strategies.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .home-section { padding: 60px 20px; text-align: center; background: #e6f0ff; }
+    .home-intro h1 { color: #002b5b; font-size: 2.5rem; margin-bottom: 15px; }
+    .home-intro p { font-size: 1.2rem; margin-bottom: 20px; }
+    .btn-primary { padding: 12px 25px; background-color: #002b5b; color: #fff; border-radius: 8px; text-decoration: none; transition: 0.3s; }
+    .btn-primary:hover { background-color: #0051a2; }
+
+    .home-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-top: 40px; }
+    .card { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s; }
+    .card:hover { transform: scale(1.03); }
+    .card img { width: 100%; height: 180px; object-fit: cover; }
+    .card h3 { color: #002b5b; margin: 15px 0 10px; }
+    .card p { padding: 0 15px 15px; font-size: 0.95rem; line-height: 1.5; }
+</style>
+{% endblock %}

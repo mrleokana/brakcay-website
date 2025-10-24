@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% block title %}Home — BraKcay{% endblock %}
+
+{% block content %}
+<!-- Banner / Hero -->
+<section class="banner">
+  <img src="{{ url_for('static', filename='images/banner.jpg') }}" alt="banner">
+  <div class="banner-text">
+    <h2>Learn | Grow | Build Generational Wealth</h2>
+    <p>BraKcay is a movement empowering youth across Africa to become resourceful architects of their own future.</p>
+    <div style="margin-top:14px;">
+      <a class="btn" href="/lessons">Start Learning</a>
+      <a class="btn" href="/contact" style="margin-left:8px;background:#fff;color:#002b5b;">Join BraKcay</a>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+  <div style="width:92%;max-width:1200px;margin:40px auto;text-align:center;">
+    <h2>Highlights / Features</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:20px;">
+      <div class="feature-card"><h3>Financial Literacy</h3><p>Budgeting, saving & investing.</p></div>
+      <div class="feature-card"><h3>Digital Marketing</h3><p>Branding, content & growth.</p></div>
+      <div class="feature-card"><h3>Forex & Crypto</h3><p>Market education & strategies.</p></div>
+      <div class="feature-card"><h3>Brotherhood & Mentorship</h3><p>Community & mentorship.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Tabbed Lessons Preview -->
+<section class="lessons">
+  <h2>Featured Lessons</h2>
+  <div class="tabs" id="lesson-tabs">
+    <div class="tab active" data-tab="tab-acca">ACCA Course</div>
+    <div class="tab" data-tab="tab-forex">Forex Trading</div>
+    <div class="tab" data-tab="tab-crypto">Crypto Trading</div>
+    <div class="tab" data-tab="tab-digital">Digital Marketing</div>
+  </div>
+
+  <!-- Tab Contents -->
+  <div id="tab-acca" class="lesson-container tab-content">
+    <div class="lesson-card">
+      <img src="{{ url_for('static', filename='images/lesson1.png') }}" alt="lesson1">
+      <div class="lesson-info"><h3>ACCA Foundations</h3><p>Structured lessons and practice.</p></div>
+    </div>
+    <div class="lesson-card">
+      <img src="{{ url_for('static', filename='images/lesson2.png') }}" alt="lesson2">
+      <div class="lesson-info"><h3>ACCA Applied</h3><p>Practice & test questions.</p></div>
+    </div>
+    <div class="lesson-card">
+      <img src="{{ url_for('static', filename='images/lesson3.png') }}" alt="lesson3">
+      <div class="lesson-info"><h3>ACCA Advanced</h3><p>Case studies & exam prep.</p></div>
+    </div>
+  </div>
+
+  <div id="tab-forex" class="lesson-container tab-content" style="display:none;">
+    <div class="lesson-card">
+      <img src="{{ url_for('static', filename='images/lesson2.png') }}" alt="forex">
+      <div class="lesson-info"><h3>Forex Basics</h3><p>Market structure, pairs & charts.</p></div>
+    </div>
+    <div class="lesson-card">
+      <img src="{{ url_for('static', filename='images/lesson3.png') }}" alt="forex2">
+      <div class="lesson-info"><h3>Technical Analysis</h3><p>Indicators & strategies.</p></div>
+    </div>
+  </div>
+
+  <div id="tab-crypto" class="lesson-container tab-content" style="display:none;">
+    <div class="lesson-card">
+      <img src="{{ url_for('static', filename='images/lesson3.png') }}" alt="crypto">
+      <div class="lesson-info"><h3>Crypto 101</h3><p>What is crypto & how it works.</p></div>
+    </div>
+  </div>
+
+  <div id="tab-digital" class="lesson-container tab-content" style="display:none;">
+    <div class="lesson-card">
+      <img src="{{ url_for('static', filename='images/lesson1.png') }}" alt="digital">
+      <div class="lesson-info"><h3>Social Growth</h3><p>Content, SEO & analytics.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Founders Section -->
+<section class="founders">
+  <h2>Meet the Founders</h2>
+  <div class="founder-container">
+    <div class="founder-card">
+      <img src="{{ url_for('static', filename='images/founder-kopanang.jpg') }}" alt="kopanang">
+      <h3>Kopanang Leokana</h3>
+      <p>Founder & Financial Literacy Consultant</p>
+    </div>
+    <div class="founder-card">
+      <img src="{{ url_for('static', filename='images/founder-thapelo.jpg') }}" alt="thapelo">
+      <h3>Thapelo Lekhotla</h3>
+      <p>Co-Founder & Digital Marketing Strategist</p>
+    </div>
+    <div class="founder-card">
+      <img src="{{ url_for('static', filename='images/founder-khutlang.jpg') }}" alt="pheello">
+      <h3>Pheello Khutlang</h3>
+      <p>Co-Founder & Financial Markets Specialist</p>
+    </div>
+  </div>
+</section>
+
+<!-- Optional CTA above footer -->
+<section style="text-align:center;padding:30px 20px;background:#f0f3f7;">
+  <h3>Start your journey today — Join BraKcay</h3>
+  <a class="btn" href="/contact" style="margin-top:12px;">Join Now</a>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+  // Tabs script for home page
+  document.addEventListener('DOMContentLoaded', function(){
+    const tabs = document.querySelectorAll('#lesson-tabs .tab');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t=>t.classList.remove('active'));
+        tab.classList.add('active');
+        document.querySelectorAll('.tab-content').forEach(c=>c.style.display='none');
+        document.getElementById(tab.dataset.tab).style.display = 'grid';
+      });
+    });
+  });
+</script>
+{% endblock %}

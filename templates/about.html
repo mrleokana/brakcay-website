@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}About — BraKcay{% endblock %}
+
+{% block content %}
+<section style="padding:40px 20px; max-width:1000px; margin:0 auto;">
+
+  <!-- Vision & Mission -->
+  <h1 style="color:#002b5b; margin-bottom:20px;">Vision & Mission</h1>
+  
+  <h2 style="color:#1ea1f2; margin-bottom:10px;">Vision</h2>
+  <p>"To become a leading force in shaping youth into resourceful architects of their own future—uniting communities, cultivating financial intelligence, digital skills, and personal growth while honoring Basotho values and culture."</p>
+  
+  <h2 style="color:#1ea1f2; margin-bottom:10px;">Mission</h2>
+  <p>"BraKcay exists to empower youth, students, and aspiring entrepreneurs by providing practical education in financial literacy, financial markets (forex, cryptocurrency, investing), and digital marketing. We guide individuals to become resourceful architects of their own success through mentorship, actionable strategies, and community building.<br><br>
+  Through BraKcay, we integrate Basotho culture and wisdom into modern learning, inspiring purpose, discipline, and creativity. Our mission is to unite communities, cultivate confident leaders, and equip youth with the tools to create wealth, impact society, and thrive in today’s fast-changing world."</p>
+
+  <!-- About Us -->
+  <h2 style="color:#002b5b; margin-top:40px; margin-bottom:20px;">About Us</h2>
+  <p>"At BraKcay, we are committed to uniting communities and guiding youth to become resourceful architects of their future. We combine financial literacy, digital skills, and financial market education with Basotho cultural wisdom, mentorship, and actionable strategies. Together, Kopanang Leokana, Mr. Khutlang, and Mr. Lekhotla are building a movement where youth thrive, communities grow, and purpose meets action."</p>
+
+  <!-- Founder Cards -->
+  <h2 style="color:#002b5b; margin-top:40px; margin-bottom:20px;">Meet the Founders</h2>
+  <div class="founder-container">
+    <!-- Kopanang -->
+    <div class="founder-card">
+      <img src="{{ url_for('static', filename='images/founder-kopanang.jpg') }}" alt="Kopanang Leokana">
+      <h3>Kopanang Leokana (BraKcay)</h3>
+      <p><strong>Founder & Financial Literacy Consultant</strong></p>
+      <p>Kopanang Leokana, fondly known as BraKcay, is a passionate educator, mentor, and entrepreneur dedicated to empowering youth and aspiring entrepreneurs. With expertise in financial literacy, digital marketing, and financial markets (forex, cryptocurrency, and investing), BraKcay provides practical knowledge that helps individuals take control of their financial future. Rooted in Basotho culture, he integrates cultural wisdom into his teachings, making lessons relatable, practical, and impactful.</p>
+    </div>
+
+    <!-- Khutlang -->
+    <div class="founder-card">
+      <img src="{{ url_for('static', filename='images/founder-khutlang.jpg') }}" alt="Pheello Khutlang">
+      <h3>Pheello Khutlang</h3>
+      <p><strong>Co-Founder & Financial Markets Specialist</strong></p>
+      <p>Mr. Khutlang is a visionary co-founder focused on digital innovation and strategic mentorship. He specializes in helping youth and entrepreneurs apply modern tools to grow businesses, understand financial markets, and build a strong personal brand. His dedication to community empowerment ensures BraKcay’s mission reaches beyond the classroom into practical societal impact.</p>
+    </div>
+
+    <!-- Lekhotla -->
+    <div class="founder-card">
+      <img src="{{ url_for('static', filename='images/founder-thapelo.jpg') }}" alt="Thapelo Lekhotla">
+      <h3>Thapelo Lekhotla</h3>
+      <p><strong>Co-Founder & Digital Marketing Strategist</strong></p>
+      <p>Mr. Lekhotla is a strategic co-founder who brings expertise in education, youth mentorship, and community engagement. He ensures BraKcay’s programs are accessible, culturally relevant, and actionable. By blending modern financial strategies with Basotho principles, he supports youth in becoming resourceful architects of their own lives.</p>
+    </div>
+  </div>
+
+  <!-- Core Values -->
+  <h2 style="color:#002b5b; margin-top:40px; margin-bottom:20px;">Core Values</h2>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin-top:16px;">
+    <div class="feature-card">Unity & Brotherhood — We rise together.</div>
+    <div class="feature-card">Resourcefulness & Innovation — We turn challenges into opportunities.</div>
+    <div class="feature-card">Purpose & Discipline — Consistency & focus.</div>
+    <div class="feature-card">Financial & Digital Literacy — Tools & practice.</div>
+    <div class="feature-card">Integrity & Excellence — High standards.</div>
+    <div class="feature-card">Faith & Spiritual Growth — Moral strength & resilience.</div>
+    <div class="feature-card">Generational Impact — Create lasting value.</div>
+  </div>
+
+</section>
+{% endblock %}
