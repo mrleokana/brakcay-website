@@ -32,13 +32,22 @@
 <section class="lessons">
   <h2>Featured Lessons</h2>
   <div class="tabs" id="lesson-tabs">
-    <div class="tab active" data-tab="tab-acca">ACCA Course</div>
-    <div class="tab" data-tab="tab-forex">Forex Trading</div>
-    <div class="tab" data-tab="tab-crypto">Crypto Trading</div>
-    <div class="tab" data-tab="tab-digital">Digital Marketing</div>
+    <!-- ✅ Added anchor wrappers for navigation -->
+    <a href="/lessons/acca" class="tab-link">
+      <div class="tab active" data-tab="tab-acca">ACCA Course</div>
+    </a>
+    <a href="/lessons/forex" class="tab-link">
+      <div class="tab" data-tab="tab-forex">Forex Trading</div>
+    </a>
+    <a href="/lessons/crypto" class="tab-link">
+      <div class="tab" data-tab="tab-crypto">Crypto Trading</div>
+    </a>
+    <a href="/lessons/digital" class="tab-link">
+      <div class="tab" data-tab="tab-digital">Digital Marketing</div>
+    </a>
   </div>
 
-  <!-- Tab Contents -->
+  <!-- Tab Contents (unchanged) -->
   <div id="tab-acca" class="lesson-container tab-content">
     <div class="lesson-card">
       <img src="{{ url_for('static', filename='images/lesson1.png') }}" alt="lesson1">
@@ -102,7 +111,7 @@
   </div>
 </section>
 
-<!-- Optional CTA above footer -->
+<!-- Optional CTA -->
 <section style="text-align:center;padding:30px 20px;background:#f0f3f7;">
   <h3>Start your journey today — Join BraKcay</h3>
   <a class="btn" href="/contact" style="margin-top:12px;">Join Now</a>
@@ -112,14 +121,25 @@
 
 {% block scripts %}
 <script>
-  // Tabs script for home page
+  // Keep tab function and prevent link reload unless user actually wants to navigate
   document.addEventListener('DOMContentLoaded', function(){
     const tabs = document.querySelectorAll('#lesson-tabs .tab');
+    const links = document.querySelectorAll('#lesson-tabs .tab-link');
+
+    links.forEach(link => {
+      link.addEventListener('click', e => {
+        // ✅ Prevent page reload for tab switch
+        if (e.target.closest('.tab')) {
+          e.preventDefault();
+        }
+      });
+    });
+
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
-        tabs.forEach(t=>t.classList.remove('active'));
+        tabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
-        document.querySelectorAll('.tab-content').forEach(c=>c.style.display='none');
+        document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
         document.getElementById(tab.dataset.tab).style.display = 'grid';
       });
     });
