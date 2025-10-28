@@ -1,10 +1,24 @@
-// small helper: prevent empty input blanks from collapsing layout and add simple formatting
-document.addEventListener('DOMContentLoaded', function(){
-  // basic card-number spacing (visual only)
-  const cardInput = document.querySelector('input[name="card-number"]');
-  if(cardInput){
-    cardInput.addEventListener('input', function(e){
-      this.value = this.value.replace(/[^\d]/g, '').replace(/(.{4})/g, '$1 ').trim();
-    });
+/document.addEventListener('DOMContentLoaded', function() {
+  const paymentSelect = document.getElementById('payment-method');
+  const fields = {
+    visa: document.getElementById('visa-fields'),
+    mpesa: document.getElementById('mpesa-fields'),
+    ecocash: document.getElementById('ecocash-fields'),
+    crypto: document.getElementById('crypto-fields')
+  };
+
+  function toggleFields() {
+    // Hide all fields
+    Object.values(fields).forEach(f => f.style.display = 'none');
+
+    // Show the selected one
+    const selected = paymentSelect.value || 'visa';
+    if (fields[selected]) fields[selected].style.display = 'block';
   }
+
+  // Initialize Visa as default
+  if (!paymentSelect.value) paymentSelect.value = 'visa';
+  toggleFields();
+
+  paymentSelect.addEventListener('change', toggleFields);
 });

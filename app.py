@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request
+from datetime import datetime
+import random
 
 app = Flask(__name__)
 
@@ -18,21 +20,28 @@ def lessons():
     return render_template('lessons.html')
 
 # Payments page
-@app.route('/payments')
+@app.route('/payments', methods=['GET', 'POST'])
 def payments():
-    return render_template('payments.html')
-
-# Contact page with form handling
-@app.route('/contact', methods=['GET', 'POST'])
-def contact():
-    sent = False
-    name = None
+    result = None
     if request.method == 'POST':
-        name = request.form['name']
-        sent = True
-    return render_template('contact.html', sent=sent, name=name)
+        method = request.form.get('payment-method')
+        amount = request.form.get('amount')
 
-if __name__ == "__main__":
+        # Dummy payment success simulation
+        result = {
+            'status': 'success',
+            'method': method.title(),
+            'amount': f"${amount}",
+            'tx_id': f"TX{random.randint(100000, 999999)}",
+            'time': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        }
+
+    return render_template('payments.html', result=result)
+
+# Contact page
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')  # Make sure contact.html exists
+
+if __name__ == '__main__':
     app.run(debug=True)
-
-

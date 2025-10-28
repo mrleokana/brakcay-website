@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Payments — BraKcay{% endblock %}
-{% block content %}
 
+{% block content %}
 <section class="payments-section">
   <h2>Make a Payment</h2>
   <p>Choose your payment method. (Dummy functionality for testing)</p>
@@ -34,6 +34,7 @@
       <option value="crypto">Cryptocurrency</option>
     </select>
 
+    <!-- Visa/MasterCard Fields -->
     <div id="visa-fields" class="payment-fields">
       <label>Card Number</label>
       <input type="text" name="card-number" placeholder="1234 5678 9012 3456">
@@ -43,55 +44,80 @@
       <input type="text" name="cvv" placeholder="123">
     </div>
 
+    <!-- Mpesa Fields -->
     <div id="mpesa-fields" class="payment-fields" style="display:none;">
       <label>Mpesa Number</label>
       <input type="text" name="mpesa-number" placeholder="07XXXXXXXX">
     </div>
 
+    <!-- EcoCash Fields -->
     <div id="ecocash-fields" class="payment-fields" style="display:none;">
       <label>EcoCash Number</label>
       <input type="text" name="ecocash-number" placeholder="07XXXXXXXX">
     </div>
 
+    <!-- Cryptocurrency Fields -->
     <div id="crypto-fields" class="payment-fields" style="display:none;">
       <label>Cryptocurrency</label>
-      <select name="crypto-coin">
+      <select name="crypto-coin" id="crypto-coin">
+        <option value="">-- Select Coin --</option>
         <option value="BTC">Bitcoin (BTC)</option>
         <option value="ETH">Ethereum (ETH)</option>
         <option value="USDT">USDT</option>
         <option value="BNB">Binance Coin (BNB)</option>
       </select>
-      <label>Wallet Address</label>
-      <input type="text" name="wallet-address" placeholder="0x...">
+      <div id="crypto-wallet" style="display:none;">
+        <label>Wallet Address</label>
+        <input type="text" name="wallet-address" placeholder="0x...">
+      </div>
     </div>
 
     <button type="submit">Pay Now</button>
   </form>
 </section>
-
 {% endblock %}
 
 {% block scripts %}
 <script>
-document.addEventListener('DOMContentLoaded',function(){
-  const select = document.getElementById('payment-method');
-  const visa = document.getElementById('visa-fields');
-  const mpesa = document.getElementById('mpesa-fields');
-  const ecocash = document.getElementById('ecocash-fields');
-  const crypto = document.getElementById('crypto-fields');
+document.addEventListener('DOMContentLoaded', function() {
+  const paymentSelect = document.getElementById('payment-method');
+  const fields = {
+    visa: document.getElementById('visa-fields'),
+    mpesa: document.getElementById('mpesa-fields'),
+    ecocash: document.getElementById('ecocash-fields'),
+    crypto: document.getElementById('crypto-fields')
+  };
+  const cryptoSelect = document.getElementById('crypto-coin');
+  const cryptoWallet = document.getElementById('crypto-wallet');
+  const cardInput = document.querySelector('input[name="card-number"]');
 
-  function toggleFields(){
-    visa.style.display = mpesa.style.display = ecocash.style.display = crypto.style.display = 'none';
-    switch(select.value){
-      case 'visa': visa.style.display='block'; break;
-      case 'mpesa': mpesa.style.display='block'; break;
-      case 'ecocash': ecocash.style.display='block'; break;
-      case 'crypto': crypto.style.display='block'; break;
-    }
+  // Format card number visually
+  if (cardInput) {
+    cardInput.addEventListener('input', function(e) {
+      this.value = this.value.replace(/[^\d]/g, '').replace(/(.{4})/g, '$1 ').trim();
+    });
   }
 
-  select.addEventListener('change', toggleFields);
+  function toggleFields() {
+    Object.values(fields).forEach(f => f.style.display = 'none');
+    const selected = paymentSelect.value || 'visa';
+    if (fields[selected]) fields[selected].style.display = 'block';
+    // hide crypto wallet unless coin selected
+    if (selected !== 'crypto') cryptoWallet.style.display = 'none';
+  }
+
+  // Show wallet input only if coin selected
+  cryptoSelect.addEventListener('change', function() {
+    if (this.value) {
+      cryptoWallet.style.display = 'block';
+    } else {
+      cryptoWallet.style.display = 'none';
+    }
+  });
+
+  if (!paymentSelect.value) paymentSelect.value = 'visa';
   toggleFields();
+  paymentSelect.addEventListener('change', toggleFields);
 });
 </script>
 {% endblock %}

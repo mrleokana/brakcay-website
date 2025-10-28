@@ -1,45 +1,152 @@
 {% extends "base.html" %}
 {% block title %}Lessons — BraKcay{% endblock %}
+
 {% block content %}
 <section class="lessons">
   <h2>Lessons & Courses</h2>
 
+  <!-- Tabs for Courses -->
   <div class="tabs" id="tabs-page">
     <div class="tab active" data-tab="page-acca">ACCA Course</div>
     <div class="tab" data-tab="page-forex">Forex Trading</div>
     <div class="tab" data-tab="page-crypto">Crypto Trading</div>
     <div class="tab" data-tab="page-digital">Digital Marketing</div>
+    <div class="tab" data-tab="page-books">Books</div>
   </div>
 
+  <!-- ACCA Lessons -->
   <div id="page-acca" class="lesson-container tab-content">
     <div class="lesson-card">
       <img src="{{ url_for('static', filename='images/lesson1.png') }}" alt="">
       <div class="lesson-info"><h3>ACCA Foundation</h3><p>Overview and quizzes</p></div>
+      <div class="lesson-description" style="display:none; margin-top:10px; padding:10px; background:#f0f0f0; border-radius:6px;">
+        <strong>Why we offer it:</strong> ACCA opens doors to global accounting, auditing, and finance careers. BraKcay provides structured, practical tutoring for Basotho youth. <br><br>
+        <strong>Life problems it solves:</strong>
+        <ul>
+          <li>Eliminates confusion and exam anxiety by guiding students step-by-step.</li>
+          <li>Provides access to mentorship, study techniques, and exam strategies even for distant students.</li>
+          <li>Prevents lost motivation from repeated failed attempts.</li>
+        </ul>
+        <strong>Economic impact:</strong>
+        <ul>
+          <li>Produces qualified finance professionals for local and international opportunities.</li>
+          <li>Builds financial literacy and professionalism among youth.</li>
+          <li>Trained accountants can mentor others, start businesses, or improve community financial management.</li>
+        </ul>
+      </div>
     </div>
     <div class="lesson-card">
-      <img src="{{ url_for('static', filename='images/lesson2.png') }}" alt="">
+      <img src="{{ url_for('static', filename='images/lesson2.jpg') }}" alt="">
       <div class="lesson-info"><h3>ACCA Intermediate</h3><p>Practice problems</p></div>
+      <div class="lesson-description" style="display:none; margin-top:10px; padding:10px; background:#f0f0f0; border-radius:6px;">
+        <strong>Why we offer it:</strong> Builds on ACCA Foundation, teaching corporate finance, performance management, and audit processes. <br><br>
+        <strong>Life problems it solves:</strong>
+        <ul>
+          <li>Equips learners to tackle financial challenges and optimize resources.</li>
+          <li>Supports business growth and ethical decision-making.</li>
+        </ul>
+        <strong>Economic impact:</strong>
+        <ul>
+          <li>Prepares youth for high-level finance roles locally and globally.</li>
+          <li>Strengthens professional standards and financial literacy in communities.</li>
+        </ul>
+      </div>
     </div>
   </div>
 
+  <!-- Forex Lessons -->
   <div id="page-forex" class="lesson-container tab-content" style="display:none;">
     <div class="lesson-card">
-      <img src="{{ url_for('static', filename='images/lesson3.png') }}" alt="">
+      <img src="{{ url_for('static', filename='images/forex1.png') }}" alt="">
       <div class="lesson-info"><h3>Forex Basics</h3><p>Market mechanics & strategy</p></div>
+      <div class="lesson-description" style="display:none; margin-top:10px; padding:10px; background:#f0f0f0; border-radius:6px;">
+        <strong>Why we offer it:</strong> Allows youth to engage global financial markets from anywhere with minimal capital. Teaches risk management and macroeconomic insights. <br><br>
+        <strong>Life problems it solves:</strong>
+        <ul>
+          <li>Provides alternative income sources to tackle unemployment.</li>
+          <li>Reduces dependency on a single job.</li>
+          <li>Develops discipline, analytical thinking, and patience.</li>
+        </ul>
+        <strong>Economic impact:</strong>
+        <ul>
+          <li>Generates foreign currency inflow into Lesotho.</li>
+          <li>Encourages entrepreneurship and self-reliance.</li>
+          <li>Creates a financially literate generation understanding global economics.</li>
+        </ul>
+      </div>
     </div>
   </div>
 
+  <!-- Crypto Lessons -->
   <div id="page-crypto" class="lesson-container tab-content" style="display:none;">
     <div class="lesson-card">
-      <img src="{{ url_for('static', filename='images/lesson3.png') }}" alt="">
+      <img src="{{ url_for('static', filename='images/forex2.png') }}" alt="">
       <div class="lesson-info"><h3>Crypto Essentials</h3><p>Wallets, exchanges & risk</p></div>
+      <div class="lesson-description" style="display:none; margin-top:10px; padding:10px; background:#f0f0f0; border-radius:6px;">
+        <strong>Why we offer it:</strong> Crypto is a global financial revolution. BraKcay teaches trading, investing, and blockchain understanding. <br><br>
+        <strong>Life problems it solves:</strong>
+        <ul>
+          <li>Diversifies income beyond traditional jobs.</li>
+          <li>Educates on scams, volatility, and safe strategies.</li>
+          <li>Encourages long-term wealth creation thinking.</li>
+        </ul>
+        <strong>Economic impact:</strong>
+        <ul>
+          <li>Positions youth in digital economies and innovation.</li>
+          <li>Inspires local crypto startups, blockchain projects, and fintech solutions.</li>
+          <li>Reduces brain drain as youth can earn and invest globally from home.</li>
+        </ul>
+      </div>
     </div>
   </div>
 
+  <!-- Digital Marketing Lessons -->
   <div id="page-digital" class="lesson-container tab-content" style="display:none;">
     <div class="lesson-card">
-      <img src="{{ url_for('static', filename='images/lesson2.png') }}" alt="">
+      <img src="{{ url_for('static', filename='images/digital-marketing.png') }}" alt="">
       <div class="lesson-info"><h3>Social Media Growth</h3><p>Content strategy & analytics</p></div>
+      <div class="lesson-description" style="display:none; margin-top:10px; padding:10px; background:#f0f0f0; border-radius:6px;">
+        <strong>Why we offer it:</strong> Digital marketing skills help youth build brands, sell products, and promote services online. <br><br>
+        <strong>Life problems it solves:</strong>
+        <ul>
+          <li>Helps entrepreneurs grow businesses with minimal capital.</li>
+          <li>Teaches freelance/remote work skills globally.</li>
+          <li>Provides tools to educate, inspire, and influence communities digitally.</li>
+        </ul>
+        <strong>Economic impact:</strong>
+        <ul>
+          <li>Boosts local economies via youth-driven online businesses.</li>
+          <li>Encourages innovation in marketing and advertising sectors.</li>
+          <li>Empowers youth to monetize skills, create jobs, and scale brands.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Books Tab -->
+  <div id="page-books" class="lesson-container tab-content" style="display:none;">
+    <div class="lesson-card">
+      <img src="{{ url_for('static', filename='images/book-cover.jpg') }}" alt="Book Cover">
+      <div class="lesson-info">
+        <h3>The Path of Brotherhood</h3>
+        <p>Foundations for Men in the Modern World</p>
+      </div>
+      <div class="lesson-description" style="margin-top:10px; padding:10px; background:#f0f0f0; border-radius:6px;">
+        <p>
+          <strong>About the Book:</strong> “The Path of The Brotherhood” is a powerful, culturally rooted guide for the modern African man. 
+          It’s a blueprint for building a life of strength, purpose, and dignity—anchored in five key pillars: relationships, health, finances, intellect, and spirituality.
+        </p>
+        <p>
+          The book weaves Basotho wisdom (maele) with personal reflections, calling men to rise above mediocrity, love with courage, lead with wisdom, 
+          and serve with faith. It’s not just a book—it’s a movement for men to return to their foundations, build legacy, and walk in brotherhood.
+        </p>
+        <div style="margin-top:15px; text-align:center;">
+          <a href="https://a.co/d/dlsU4Tr" target="_blank" class="btn btn-primary" 
+             style="background:#002B5B; color:white; padding:10px 20px; border-radius:8px; text-decoration:none;">
+            Buy Now on Amazon
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -49,6 +156,7 @@
 {% block scripts %}
 <script>
 document.addEventListener('DOMContentLoaded', function(){
+  // Tab switching
   const tabs = document.querySelectorAll('#tabs-page .tab');
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
@@ -56,6 +164,20 @@ document.addEventListener('DOMContentLoaded', function(){
       tab.classList.add('active');
       document.querySelectorAll('.tab-content').forEach(c=>c.style.display='none');
       document.getElementById(tab.dataset.tab).style.display = 'grid';
+    });
+  });
+
+  // Toggle lesson descriptions (only one open at a time)
+  const lessons = document.querySelectorAll('.lesson-card');
+  lessons.forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.lesson-description').forEach(d => {
+        if(d !== card.querySelector('.lesson-description')){
+          d.style.display = 'none';
+        }
+      });
+      const desc = card.querySelector('.lesson-description');
+      desc.style.display = (desc.style.display === 'none') ? 'block' : 'none';
     });
   });
 });

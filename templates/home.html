@@ -32,7 +32,6 @@
 <section class="lessons">
   <h2>Featured Lessons</h2>
   <div class="tabs" id="lesson-tabs">
-    <!-- ✅ Added anchor wrappers for navigation -->
     <a href="/lessons/acca" class="tab-link">
       <div class="tab active" data-tab="tab-acca">ACCA Course</div>
     </a>
@@ -47,43 +46,46 @@
     </a>
   </div>
 
-  <!-- Tab Contents (unchanged) -->
+  <!-- ACCA COURSE -->
   <div id="tab-acca" class="lesson-container tab-content">
     <div class="lesson-card">
       <img src="{{ url_for('static', filename='images/lesson1.png') }}" alt="lesson1">
       <div class="lesson-info"><h3>ACCA Foundations</h3><p>Structured lessons and practice.</p></div>
     </div>
     <div class="lesson-card">
-      <img src="{{ url_for('static', filename='images/lesson2.png') }}" alt="lesson2">
+      <img src="{{ url_for('static', filename='images/lesson2.jpg') }}" alt="lesson2">
       <div class="lesson-info"><h3>ACCA Applied</h3><p>Practice & test questions.</p></div>
     </div>
     <div class="lesson-card">
-      <img src="{{ url_for('static', filename='images/lesson3.png') }}" alt="lesson3">
+      <img src="{{ url_for('static', filename='images/lesson3.jpg') }}" alt="lesson3">
       <div class="lesson-info"><h3>ACCA Advanced</h3><p>Case studies & exam prep.</p></div>
     </div>
   </div>
 
+  <!-- FOREX TRADING -->
   <div id="tab-forex" class="lesson-container tab-content" style="display:none;">
     <div class="lesson-card">
-      <img src="{{ url_for('static', filename='images/lesson2.png') }}" alt="forex">
+      <img src="{{ url_for('static', filename='images/forex1.png') }}" alt="forex1">
       <div class="lesson-info"><h3>Forex Basics</h3><p>Market structure, pairs & charts.</p></div>
     </div>
     <div class="lesson-card">
-      <img src="{{ url_for('static', filename='images/lesson3.png') }}" alt="forex2">
+      <img src="{{ url_for('static', filename='images/forex2.png') }}" alt="forex2">
       <div class="lesson-info"><h3>Technical Analysis</h3><p>Indicators & strategies.</p></div>
     </div>
   </div>
 
+  <!-- CRYPTO TRADING -->
   <div id="tab-crypto" class="lesson-container tab-content" style="display:none;">
     <div class="lesson-card">
-      <img src="{{ url_for('static', filename='images/lesson3.png') }}" alt="crypto">
+      <img src="{{ url_for('static', filename='images/forex2.jpg') }}" alt="crypto1">
       <div class="lesson-info"><h3>Crypto 101</h3><p>What is crypto & how it works.</p></div>
     </div>
   </div>
 
+  <!-- DIGITAL MARKETING -->
   <div id="tab-digital" class="lesson-container tab-content" style="display:none;">
     <div class="lesson-card">
-      <img src="{{ url_for('static', filename='images/lesson1.png') }}" alt="digital">
+      <img src="{{ url_for('static', filename='images/digital-marketing.png') }}" alt="digital-marketing">
       <div class="lesson-info"><h3>Social Growth</h3><p>Content, SEO & analytics.</p></div>
     </div>
   </div>
@@ -111,6 +113,30 @@
   </div>
 </section>
 
+<!-- 💰 Price List Section -->
+<section id="pricing" style="padding:60px 20px;background:#f8faff;">
+  <h2 style="text-align:center;color:#002b5b;margin-bottom:30px;">BraKcay Price List</h2>
+  <div style="max-width:900px;margin:0 auto;text-align:center;">
+    <p style="margin-bottom:15px;font-size:17px;">
+      Browse through our latest <strong>BraKcay Services Price List</strong> below.  
+      You can also download it for offline viewing.
+    </p>
+
+    <iframe 
+      src="{{ url_for('static', filename='files/BraKcay_Price_List.pdf') }}" 
+      style="width:100%;height:600px;border:1px solid #ccc;border-radius:10px;"
+      title="BraKcay Price List PDF">
+    </iframe>
+
+    <div style="margin-top:20px;">
+      <a href="{{ url_for('static', filename='files/BraKcay_Price_List.pdf') }}" download
+         style="background-color:#002b5b;color:#fff;padding:12px 25px;border-radius:6px;text-decoration:none;font-weight:500;">
+         📄 Download Full Price List (PDF)
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- Optional CTA -->
 <section style="text-align:center;padding:30px 20px;background:#f0f3f7;">
   <h3>Start your journey today — Join BraKcay</h3>
@@ -121,14 +147,12 @@
 
 {% block scripts %}
 <script>
-  // Keep tab function and prevent link reload unless user actually wants to navigate
   document.addEventListener('DOMContentLoaded', function(){
     const tabs = document.querySelectorAll('#lesson-tabs .tab');
     const links = document.querySelectorAll('#lesson-tabs .tab-link');
 
     links.forEach(link => {
       link.addEventListener('click', e => {
-        // ✅ Prevent page reload for tab switch
         if (e.target.closest('.tab')) {
           e.preventDefault();
         }

@@ -81,5 +81,9 @@
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat">
   </a>
 
+  <!-- JS Scripts -->
+  {% block scripts %}{% endblock %}
+  <script src="{{ url_for('static', filename='js/lessons.js') }}"></script>
+
 </body>
 </html>
